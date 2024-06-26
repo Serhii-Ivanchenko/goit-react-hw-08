@@ -2,7 +2,7 @@ import { FaUser } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import css from './Contact.module.css';
-import { deleteContact } from '../../redux/contactsOps';
+import { deleteContact } from '../../redux/contacts/operations';
 import toast, { Toaster } from 'react-hot-toast';
 
 export default function Contact({ item }) {
