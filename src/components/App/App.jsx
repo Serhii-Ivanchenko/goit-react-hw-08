@@ -18,25 +18,16 @@ import Layout from '../Layout/Layout';
 import AppBar from '../AppBar/AppBar';
 
 function App() {
-  const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
   const isError = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
 
   return (
     <Layout>
       <AppBar />
-      <h1>Phonebook</h1>
-
-      <ContactForm />
-
-      <SearchBox />
-      {isLoading && <Loader />}
+        {/* {isLoading && <Loader />}
       {isError && <ErrorMessage />}
-      <ContactList />
+      <ContactForm /> */}
+
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegistrationPage />} />
