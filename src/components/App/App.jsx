@@ -12,10 +12,10 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from '../../pages/HomePage/HomePage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
 import LoginPage from '../../pages/LoginPage/LoginPage';
-import ContactsPage from '../../pages/ContactsPage/ContactsPage'
+import ContactsPage from '../../pages/ContactsPage/ContactsPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Layout from '../Layout/Layout';
-
+import AppBar from '../AppBar/AppBar';
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ function App() {
 
   return (
     <Layout>
+      <AppBar />
       <h1>Phonebook</h1>
 
       <ContactForm />

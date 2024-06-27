@@ -1,3 +1,6 @@
 export default function AuthNav() {
-  return <div></div>;
+  return <div>
+    <button>Log in</button>
+    <button>Register</button>
+  </div>;
 }
