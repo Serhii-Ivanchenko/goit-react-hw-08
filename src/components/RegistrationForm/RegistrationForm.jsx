@@ -11,7 +11,7 @@ const validationSchema = Yup.object().shape({
     .required('This field is required to fill!')
     .min(3, 'Must be at least 3 characters long')
     .max(50, 'Must be not longer than 50 characters'),
-  email: Yup.string().required('This field is required to fill!'),
+  email: Yup.string().email('Enter valid email address').required('Required'),
   password: Yup.string()
     .required('This field is required to fill!')
     .min(6, 'Must be at least 6 characters long'),
@@ -43,8 +43,12 @@ export default function RegistrationForm() {
           .then(() => {
             toast.success('Account successfully registered!');
           })
-          .catch(() => {
-            toast.error(`OOPS! An error occurred! Please, try again later!`);
+          .catch((error) => {
+            toast.error(
+              error === 400
+                ? 'This email has already been taken'
+                : 'OOPS! An error occurred! Please, try again later!'
+            );
           });
         actions.resetForm();
       }}
