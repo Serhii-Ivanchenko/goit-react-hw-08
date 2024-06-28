@@ -27,6 +27,7 @@ export default function RegistrationPage() {
 
   return (
     <>
+      <h2>Create new account</h2>
       <Formik
         initialValues={{
           id: '',

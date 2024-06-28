@@ -24,9 +24,6 @@ function App() {
   return (
     <Layout>
       <AppBar />
-        {/* {isLoading && <Loader />}
-      {isError && <ErrorMessage />}
-      <ContactForm /> */}
 
       <Routes>
         <Route path="/" element={<HomePage />} />
