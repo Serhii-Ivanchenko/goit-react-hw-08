@@ -1,10 +1,10 @@
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useId } from 'react';
 import * as Yup from 'yup';
-import { addContact } from '../../redux/contacts/operations';
 import toast from 'react-hot-toast';
 import css from './RegistrationForm.module.css';
 import { useDispatch } from 'react-redux';
+import { register } from '../../redux/auth/operations';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -26,24 +26,25 @@ export default function RegistrationForm() {
   return (
     <Formik
       initialValues={{
-        id: '',
         name: '',
-        number: '',
+        email: '',
+        password: '',
       }}
       validationSchema={validationSchema}
       onSubmit={(values, actions) => {
         dispatch(
-          addContact({
+          register({
             name: values.name,
-            number: values.number,
+            email: values.email,
+            password: values.password,
           })
         )
           .unwrap()
           .then(() => {
-            toast.success('Contact successfully added!');
+            toast.success('Account successfully registered!');
           })
-          .catch(err => {
-            toast.error(`${err.message}`);
+          .catch(() => {
+            toast.error(`OOPS! An error occurred! Please, try again later!`);
           });
         actions.resetForm();
       }}

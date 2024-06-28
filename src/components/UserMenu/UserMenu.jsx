@@ -1,8 +1,13 @@
-import css from './UserMenu.module.css'
+import { useSelector } from 'react-redux';
+import css from './UserMenu.module.css';
+import { selectUser } from '../../redux/auth/selectors';
 
 export default function UserMenu() {
-  return <div className={css.userMenu}>
-    <p>Welcome, username</p>
-    <button>Logout</button>
-  </div>;
+  const user = useSelector(selectUser);
+  return (
+    <div className={css.userMenu}>
+      <p>Welcome, {user.name}</p>
+      <button>Logout</button>
+    </div>
+  );
 }
