@@ -1,12 +1,6 @@
 import './App.css';
-import ContactForm from '../ContactForm/ContactForm';
-import SearchBox from '../SearchBox/SearchBox';
-import ContactList from '../ContactList/ContactList';
-import Loader from '../Loader/Loader';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/contacts/operations';
+
 import { selectError, selectLoading } from '../../redux/contacts/selectors';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../../pages/HomePage/HomePage';
@@ -16,10 +10,14 @@ import ContactsPage from '../../pages/ContactsPage/ContactsPage';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
 import Layout from '../Layout/Layout';
 import AppBar from '../AppBar/AppBar';
+import { useEffect } from 'react';
+import { refreshUser } from '../../redux/auth/operations';
 
 function App() {
-  const isLoading = useSelector(selectLoading);
-  const isError = useSelector(selectError);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return (
     <Layout>
