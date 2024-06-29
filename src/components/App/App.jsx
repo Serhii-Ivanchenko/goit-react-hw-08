@@ -1,7 +1,5 @@
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { selectError, selectLoading } from '../../redux/contacts/selectors';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../../pages/HomePage/HomePage';
 import RegistrationPage from '../../pages/RegistrationPage/RegistrationPage';
@@ -12,14 +10,19 @@ import Layout from '../Layout/Layout';
 import AppBar from '../AppBar/AppBar';
 import { useEffect } from 'react';
 import { refreshUser } from '../../redux/auth/operations';
+import { selectIsRefreshing } from '../../redux/auth/selectors';
+import Loader from '../Loader/Loader';
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  const isRefreshing = useSelector(selectIsRefreshing);
+
+  return isRefreshing ? <Loader/> : (
     <Layout>
       <AppBar />
 

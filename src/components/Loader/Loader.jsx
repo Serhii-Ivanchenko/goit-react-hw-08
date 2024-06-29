@@ -14,6 +14,7 @@ export default function Loader() {
         wrapperStyle={{}}
         wrapperClass=""
       />
+      <p>Loading, please wait...</p>
     </div>
   );
 }
