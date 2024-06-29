@@ -12,6 +12,8 @@ import { useEffect } from 'react';
 import { refreshUser } from '../../redux/auth/operations';
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 import Loader from '../Loader/Loader';
+import RestrictedRoute from '../RestrictedRoute';
+import PrivateRoute from '../PrivateRoute';
 
 function App() {
   const dispatch = useDispatch();
@@ -22,15 +24,29 @@ function App() {
 
   const isRefreshing = useSelector(selectIsRefreshing);
 
-  return isRefreshing ? <Loader/> : (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <Layout>
       <AppBar />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/contacts" element={<ContactsPage />} />
+
+        <Route
+          path="/register"
+          element={<RestrictedRoute component={<RegistrationPage />} />}
+        />
+        <Route
+          path="/login"
+          element={<RestrictedRoute component={<LoginPage />} />}
+        />
+
+        <Route
+          path="/contacts"
+          element={<PrivateRoute component={<ContactsPage />} />}
+        />
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Layout>
