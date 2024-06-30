@@ -1,7 +1,7 @@
 @import url(../node_modules/modern-normalize/modern-normalize.css);
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,7 +17,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #282828;
   text-decoration: inherit;
 }
 a:hover {

@@ -1,3 +1,19 @@
 .title {
+    font-family: "Lilita One", sans-serif;
+    font-size: 60px;
     text-align: center;
+}
+
+.subTitle {
+
+}
+
+.list {
+    list-style-type: disc;
+    margin-bottom: 10px;
+}
+
+.homePageLink {
+    font-weight: 700;
+    text-decoration: underline;
 }
