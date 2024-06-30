@@ -19,15 +19,21 @@
     font-size: 18px;
 }
 
-.info > p {
+.info>p {
     display: flex;
     gap: 8px;
     align-items: center;
 }
 
+.btnGroup {
+    display: flex;
+    gap: 5px;
+}
+
 .btn {
-    max-width: 150px;
-    max-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 8px;
     border: 1px solid rgb(29, 29, 29);
     padding: 0.6em 1.2em;
@@ -43,4 +49,18 @@
 .icon {
     width: 20px;
     height: 20px;
+}
+
+.btnIcon {
+    width: 20px;
+    height: 20px;
+}
+
+.editingInput {
+    background-color: #ffffff;
+    border: 1px solid rgb(29, 29, 29);
+    border-radius: 3px;
+    color: rgb(29, 29, 29);
+    font-size: 18px;
+    padding: 0 5px;
 }

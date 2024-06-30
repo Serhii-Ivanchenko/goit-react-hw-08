@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import css from './Contact.module.css';
 import { deleteContact } from '../../redux/contacts/operations';
 import toast, { Toaster } from 'react-hot-toast';
+import { FaTrashCan } from 'react-icons/fa6';
+import { FaEdit } from 'react-icons/fa';
 
 export default function Contact({ item }) {
   const dispatch = useDispatch();
@@ -20,21 +22,26 @@ export default function Contact({ item }) {
           {item.number}
         </p>
       </div>
-      <button
-        className={css.btn}
-        onClick={() => {
-          dispatch(deleteContact(item.id))
-            .unwrap()
-            .then(() => {
-              toast.success('Contact successfully deleted!');
-            })
-            .catch(err => {
-              toast.error(`${err.message}`);
-            });
-        }}
-      >
-        Delete
-      </button>
+      <div className={css.btnGroup}>
+        {/* <button className={css.btn} >
+          <FaEdit className={css.btnIcon} />
+        </button> */}
+        <button
+          className={css.btn}
+          onClick={() => {
+            dispatch(deleteContact(item.id))
+              .unwrap()
+              .then(() => {
+                toast.success('Contact successfully deleted!');
+              })
+              .catch(err => {
+                toast.error(`${err.message}`);
+              });
+          }}
+        >
+          <FaTrashCan className={css.btnIcon} />
+        </button>
+      </div>
       <Toaster />
     </div>
   );
