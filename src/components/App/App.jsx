@@ -43,16 +43,28 @@ function App() {
 
           <Route
             path="/register"
-            element={<RestrictedRoute component={<RegistrationPage />} />}
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegistrationPage />}
+              />
+            }
           />
           <Route
             path="/login"
-            element={<RestrictedRoute component={<LoginPage />} />}
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+              />
+            }
           />
 
           <Route
             path="/contacts"
-            element={<PrivateRoute component={<ContactsPage />} />}
+            element={
+              <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+            }
           />
 
           <Route path="*" element={<NotFoundPage />} />
