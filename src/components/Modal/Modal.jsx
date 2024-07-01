@@ -26,11 +26,8 @@ export default function ContactEditor({
 
   const handleSubmit = e => {
     e.preventDefault();
+    onClose();
     dispatch(editContact({ id: contactId, name: name, number: number }))
-      .unwrap()
-      .then(() => {
-        onClose();
-      });
   };
 
   return (
