@@ -6,9 +6,22 @@ import { deleteContact } from '../../redux/contacts/operations';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaTrashCan } from 'react-icons/fa6';
 import { FaEdit } from 'react-icons/fa';
+import { useState } from 'react';
+import ModalWindow from '../Modal/Modal';
+import ContactEditor from '../Modal/Modal';
 
 export default function Contact({ item }) {
   const dispatch = useDispatch();
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+    console.log(item.id);
+  };
+
+  const handleModalClose = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className={css.card}>
@@ -23,9 +36,9 @@ export default function Contact({ item }) {
         </p>
       </div>
       <div className={css.btnGroup}>
-        {/* <button className={css.btn} >
+        <button className={css.btn} onClick={openModal}>
           <FaEdit className={css.btnIcon} />
-        </button> */}
+        </button>
         <button
           className={css.btn}
           onClick={() => {
@@ -43,6 +56,16 @@ export default function Contact({ item }) {
         </button>
       </div>
       <Toaster />
+
+      {modalIsOpen && (
+        <ContactEditor
+          initialName={item.name}
+          initialNumber={item.number}
+          isOpen={modalIsOpen}
+          onClose={handleModalClose}
+          contactId={item.id}
+        />
+      )}
     </div>
   );
 }

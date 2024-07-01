@@ -1,4 +1,9 @@
-import { fetchContacts, deleteContact, addContact } from './operations';
+import {
+  fetchContacts,
+  deleteContact,
+  addContact,
+  editContact,
+} from './operations';
 import { initialState } from '../initialState';
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from '../auth/operations';
@@ -44,10 +49,24 @@ const contactsSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(logOut.fulfilled, (state) => {
+      .addCase(logOut.fulfilled, state => {
         state.items = [];
         state.error = null;
         state.loading = false;
+      })
+      .addCase(editContact.pending, state => {
+        state.error = false;
+        state.loading = true;
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        const contactToEditIndex = state.items.findIndex(
+          item => item.id === action.payload.id
+        );
+        state.items[contactToEditIndex] = action.payload;
+      })
+      .addCase(editContact.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
       }),
 });
 
