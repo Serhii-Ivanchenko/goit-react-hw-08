@@ -30,10 +30,10 @@ export default function Contact({ item }) {
           <FaUser className={css.icon} />
           {item.name}
         </p>
-        <p>
+        <a href={item.number}>
           <FaPhoneAlt className={css.icon} />
           {item.number}
-        </p>
+        </a>
       </div>
       <div className={css.btnGroup}>
         <button className={css.btn} onClick={openModal}>
