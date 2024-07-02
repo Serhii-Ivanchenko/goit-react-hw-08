@@ -1,11 +1,11 @@
-import { FaUser } from 'react-icons/fa';
-import { FaPhoneAlt } from 'react-icons/fa';
+import { FaUser, FaPhoneAlt, FaEdit } from 'react-icons/fa';
+// import { FaPhoneAlt } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import css from './Contact.module.css';
 import { deleteContact } from '../../redux/contacts/operations';
 import toast, { Toaster } from 'react-hot-toast';
 import { FaTrashCan } from 'react-icons/fa6';
-import { FaEdit } from 'react-icons/fa';
+// import { FaEdit } from 'react-icons/fa';
 import { useState } from 'react';
 import ModalWindow from '../Modal/Modal';
 import ContactEditor from '../Modal/Modal';

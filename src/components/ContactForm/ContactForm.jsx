@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import css from './ContactForm.module.css';
 import { addContact } from '../../redux/contacts/operations';
 import toast, { Toaster } from 'react-hot-toast';
+import PhoneInputField from '../PhoneInput/PhoneInput';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -55,7 +56,12 @@ export default function ContactForm() {
           <ErrorMessage className={css.error} name="name" component="span" />
 
           <label htmlFor={numberFieldId}>Number</label>
-          <Field name="number" type="text" id={numberFieldId} />
+          <Field
+            name="number"
+            type="text"
+            id={numberFieldId}
+            component={PhoneInputField}
+          />
           <ErrorMessage className={css.error} name="number" component="span" />
 
           <button className={css.btn} type="submit">
