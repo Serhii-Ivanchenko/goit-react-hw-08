@@ -25,6 +25,12 @@
     align-items: center;
 }
 
+.phoneLink {
+    display: flex;
+    gap: 8px;
+    font-weight: 600;
+}
+
 .btnGroup {
     display: flex;
     gap: 5px;

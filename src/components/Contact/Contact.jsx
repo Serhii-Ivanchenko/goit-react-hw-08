@@ -30,7 +30,7 @@ export default function Contact({ item }) {
           <FaUser className={css.icon} />
           {item.name}
         </p>
-        <a href={item.number}>
+        <a href={`tel:${item.number}`} className={css.phoneLink}>
           <FaPhoneAlt className={css.icon} />
           {item.number}
         </a>
